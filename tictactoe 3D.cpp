@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include "SFML/Graphics.hpp"
 #include "Block.h"
@@ -12,6 +12,7 @@ int main()
 {
     std::string adres = "asset/schematic.png";
     Set set(adres);
+
     for (int i = 0; i < 10; i++)
         for (int j = 0; j < 10; j++)
             set.addBlock(adres, sf::Vector2f(i,j));

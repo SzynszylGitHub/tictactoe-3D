@@ -21,6 +21,7 @@ void Set::deleteBlock(sf::Vector2f position)
 	Blocks.erase(position);
 }
 
+
 void Set::listTexture() {
 	for (auto& el : Asset)
 		std::cout << "\033[34m" << el.second.getAdress() << "\033[0m" << "\n";
@@ -37,6 +38,11 @@ void Set::draw(sf::RenderWindow& window) const {
 	for (const auto& el : Blocks) {
 		window.draw(*el.second);
 	}
+}
+
+void Set::printfTextureList() {
+	for (auto& el : Blokcs)
+		std::cout << "niebieski" << el.second->getAdress() << "reset" << std::endl;
 }
 
 void Set::setPosition(sf::Vector2f position) {
