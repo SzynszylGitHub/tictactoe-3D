@@ -5,29 +5,32 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
-struct Less{
+struct Less {
 public:
-    constexpr bool operator()(const sf::Vector2f& v1, const sf::Vector2f& v2) const{
-        return  v1.x < v2.x&& v1.y == v2.y
-            || v1.x < v2.x&& v1.y < v2.y
-            || v1.x == v2.x && v1.y < v2.y;
+    constexpr bool operator()(const sf::Vector2f& v1, const sf::Vector2f& v2) const {
+        if (v1.x < v2.x) return true;
+        if (v1.x > v2.x) return false;
+        return v1.y < v2.y;
     }
 };
 
-class Set
-{
+class Set {
 public:
-    Set(const std::string textureAdress, sf::Vector2f position = sf::Vector2f(0, 0));
-    Set(const std::map<std::string,BetterTexture>&, sf::Vector2f position = sf::Vector2f(0, 0));
 
+    Set(const std::string& textureAdress, sf::Vector2f position = sf::Vector2f(0, 0));
+    Set(const std::map<std::string, BetterTexture>& textures, sf::Vector2f position = sf::Vector2f(0, 0));
+  
     void addBlock(const std::string textureAdress, sf::Vector2f position);
     void deleteBlock(sf::Vector2f position);
+    void listTexture();
 
     void addTexture(const std::string textureAdress);
-    void draw(sf::RenderWindow&) const;
+    void draw(sf::RenderWindow& window) const;
+
 
     void printfTextureList();
     void setPosition(sf::Vector2f);
+
     sf::Vector2f getPosition() const;
 
 private:

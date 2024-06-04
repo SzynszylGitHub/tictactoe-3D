@@ -3,7 +3,8 @@
 BetterTexture::BetterTexture(std::string adress) 
 	: _adress(adress)
 {
-	loadFromFile(_adress);
+		if(!loadFromFile(_adress))
+			printf("\n");
 }
 
 void BetterTexture::setAdress(std::string adress) {
@@ -16,6 +17,7 @@ std::string BetterTexture::getAdress() const{
 }
 
 const sf::Texture& BetterTexture::getFckadress() const{
+	
 	return *this;
 }
 
