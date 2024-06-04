@@ -16,21 +16,28 @@ public:
 
 class Set {
 public:
-    Set(const std::string& textureAdress, sf::Vector2f position = sf::Vector2f(0, 0));
+    Set();
+    Set(const std::string& textureAdres, sf::Vector2f position = sf::Vector2f(0, 0));
     Set(const std::map<std::string, BetterTexture>& textures, sf::Vector2f position = sf::Vector2f(0, 0));
+    Set(const Set& other);
 
-    void addBlock(const std::string textureAdress, sf::Vector2f position);
+    void addBlock(const std::string textureAdres, sf::Vector2f position);
     void deleteBlock(sf::Vector2f position);
     void listTexture();
 
-    void addTexture(const std::string textureAdress);
+    void Scale(sf::Vector2f);
+    void addTexture(const std::string textureAdres);
     void draw(sf::RenderWindow& window) const;
+    sf::Vector2f getSizeOfBlock();
 
-
+    int getNumOfBlocks();
     void setPosition(sf::Vector2f position);
     sf::Vector2f getPosition() const;
+    
 
 private:
+    int NumOfBlocks = 0;
+    sf::Vector2f _scale = sf::Vector2f(1, 1);
     sf::Vector2f _position;
     std::map<std::string, BetterTexture> Asset;
     std::map<sf::Vector2f, std::unique_ptr<Block>, Less> Blocks;
