@@ -6,7 +6,7 @@ Set::Set(const std::string textureAdress, sf::Vector2f position)
 	addTexture(textureAdress);
 }
 
-Set::Set(const std::set<BetterTexture>& textures,sf::Vector2f position)
+Set::Set(const std::map<std::string,BetterTexture>& textures,sf::Vector2f position)
 		:_position(position), Asset(textures)
 {
 
@@ -23,17 +23,18 @@ void Set::deleteBlock(sf::Vector2f position)
 }
 
 void Set::addTexture(const std::string textureAdress) {
-		Asset.insert(textureAdress);
-
-	std::cout << "loaded texture: \n";
-	for (auto& el : Asset) {
-		std::cout <<el.getAdress()<<"\n";
-	}
+	if(Asset.find(textureAdress)==Asset.end())
+		Asset.emplace(textureAdress,BetterTexture(textureAdress));
 }
 
 void Set::draw(sf::RenderWindow& handle)const {
 	for (const auto& el : Blocks)
 		handle.draw(*el.second);
+}
+
+void Set::printfTextureList() {
+	for (auto& el : Blokcs)
+		std::cout << "niebieski" << el.second->getAdress() << "reset" << std::endl;
 }
 
 void Set::setPosition(sf::Vector2f position) {

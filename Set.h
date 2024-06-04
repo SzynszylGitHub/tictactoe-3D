@@ -1,10 +1,9 @@
 #pragma once
 #include <map>
-#include <set>
-#include <iostream>
 #include "Block.h"
 #include "BetterTexture.h"
 #include "SFML/Graphics.hpp"
+#include <iostream>
 
 struct Less{
 public:
@@ -19,7 +18,7 @@ class Set
 {
 public:
     Set(const std::string textureAdress, sf::Vector2f position = sf::Vector2f(0, 0));
-    Set(const std::set<BetterTexture>&, sf::Vector2f position = sf::Vector2f(0, 0));
+    Set(const std::map<std::string,BetterTexture>&, sf::Vector2f position = sf::Vector2f(0, 0));
 
     void addBlock(const std::string textureAdress, sf::Vector2f position);
     void deleteBlock(sf::Vector2f position);
@@ -27,12 +26,13 @@ public:
     void addTexture(const std::string textureAdress);
     void draw(sf::RenderWindow&) const;
 
+    void printfTextureList();
     void setPosition(sf::Vector2f);
     sf::Vector2f getPosition() const;
 
 private:
     sf::Vector2f _position;
 
-    std::set<BetterTexture> Asset;
+    std::map<std::string,BetterTexture> Asset;
     std::map<sf::Vector2f, std::unique_ptr<Block>,Less> Blocks;
 };

@@ -17,10 +17,7 @@ int main()
     set.addBlock(adres, sf::Vector2f(0, 2));
     
     set.setPosition(sf::Vector2f(200, 0));
-   /* for (int i = 0; i < 10; i++)
-        for (int j = 0; j < 10; j++)
-            set.addBlock(adres, sf::Vector2f(i,j));*/
-
+   
      sf::RenderWindow window(sf::VideoMode(width, height), "Gra");
      sf::Event event;
 
