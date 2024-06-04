@@ -35,6 +35,7 @@ void Set::deleteBlock(sf::Vector2f position)
 	Blocks.erase(position);
 }
 
+
 void Set::listTexture() {
 	for (auto& el : Asset)
 		std::cout << "\033[34m" << el.second.getAdres() << "\033[0m" << "\n";
@@ -61,6 +62,7 @@ void Set::draw(sf::RenderWindow& window) const {
 	}
 }
 
+
 sf::Vector2f Set::getSizeOfBlock() {
 	auto size = Asset.begin()->second.getSize();
 	return sf::Vector2f(size.x*_scale.x,size.y*_scale.y);
@@ -68,7 +70,6 @@ sf::Vector2f Set::getSizeOfBlock() {
 
 int Set::getNumOfBlocks(){
 	return NumOfBlocks;
-}
 
 void Set::setPosition(sf::Vector2f position) {
 	

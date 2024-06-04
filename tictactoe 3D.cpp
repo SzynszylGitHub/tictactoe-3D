@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include "SFML/Graphics.hpp"
 #include "Block.h"
@@ -30,6 +30,7 @@ int main()
         std::cout << "layer[" << i << "] Position: {" << layer[i].getPosition().x<<","<< layer[i].getPosition().y<< "}\n";
         layer[i].listTexture();
     }
+
 
      sf::RenderWindow window(sf::VideoMode(width, height), "Gra");
      sf::Event event;
